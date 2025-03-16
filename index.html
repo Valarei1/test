@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Hitler Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Name Selection Screen -->
+    <div id="name-selection-screen">
+        <h1>Secret Hitler</h1>
+        <div class="name-selection-form">
+            <h2>Choose Your Name</h2>
+            <input type="text" id="player-name-input" placeholder="Enter your name" maxlength="15">
+            <button id="confirm-name-btn">Confirm Name</button>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="hidden">
+        <h1>Secret Hitler</h1>
+        <div class="login-form">
+            <h2>Welcome, <span id="player-name-display">Player</span>!</h2>
+            <input type="text" id="game-code" placeholder="Game Code (to join)">
+            <button id="create-game-btn">Create Game</button>
+            <button id="join-game-btn">Join Game</button>
+            <button id="change-name-btn">Change Name</button>
+        </div>
+    </div>
+
+    <!-- Game Board -->
+    <div id="game-board" class="hidden">
+        <div class="game-header">
+            <h1>Secret Hitler</h1>
+            <div class="game-info">
+                <p>Game Code: <span id="game-code-display"></span></p>
+                <button id="start-game-btn" class="hidden">Start Game</button>
+            </div>
+        </div>
+
+        <div class="game-content">
+            <!-- Policy Tracks -->
+            <div class="policy-tracks">
+                <div class="liberal-track">
+                    <h2>Liberal Policies</h2>
+                    <div class="policy-slots">
+                        <div class="policy-slot" id="liberal-1"></div>
+                        <div class="policy-slot" id="liberal-2"></div>
+                        <div class="policy-slot" id="liberal-3"></div>
+                        <div class="policy-slot" id="liberal-4"></div>
+                        <div class="policy-slot" id="liberal-5"></div>
+                    </div>
+                </div>
+                <div class="fascist-track">
+                    <h2>Fascist Policies</h2>
+                    <div class="policy-slots">
+                        <div class="policy-slot" id="fascist-1">
+                            <div class="fascist-icon icon-investigate" id="fascist-icon-1"></div>
+                        </div>
+                        <div class="policy-slot" id="fascist-2">
+                            <div class="fascist-icon icon-investigate" id="fascist-icon-2"></div>
+                        </div>
+                        <div class="policy-slot" id="fascist-3">
+                            <div class="fascist-icon icon-peek" id="fascist-icon-3"></div>
+                        </div>
+                        <div class="policy-slot" id="fascist-4">
+                            <div class="fascist-icon icon-execute" id="fascist-icon-4"></div>
+                        </div>
+                        <div class="policy-slot" id="fascist-5">
+                            <div class="fascist-icon icon-execute" id="fascist-icon-5"></div>
+                        </div>
+                        <div class="policy-slot" id="fascist-6"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Area -->
+            <div class="player-area">
+                <div class="player-role-container">
+                    <h2>Your Role</h2>
+                    <div id="player-role" class="role-card"></div>
+                </div>
+                <div class="players-container">
+                    <h2>Players</h2>
+                    <ul id="players"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Election Popup -->
+    <div id="election-popup" class="popup hidden">
+        <div class="popup-content">
+            <h2>Election</h2>
+            <div class="nomination">
+                <div class="president-nominee">
+                    <p id="president-name" class="pixelated-name">Player 1</p>
+                </div>
+                <p class="nomination-x">x</p>
+                <div class="chancellor-nominee">
+                    <p id="chancellor-name" class="pixelated-name">Player 2</p>
+                </div>
+            </div>
+            <div class="voting-options">
+                <button class="ja-btn">Ja</button>
+                <button class="nein-btn">Nein</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Policy Selection -->
+    <div id="policy-selection" class="popup hidden">
+        <div class="popup-content">
+            <h2>Select a policy</h2>
+            <div class="policy-options">
+                <div class="policy-card"></div>
+                <div class="policy-card"></div>
+                <div class="policy-card"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Action -->
+    <div id="executive-action" class="popup hidden">
+        <div class="popup-content">
+            <h2>Executive Action</h2>
+            <p id="action-description"></p>
+            <div id="action-options"></div>
+        </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="game-over" class="popup hidden">
+        <div class="popup-content">
+            <h2>Game Over</h2>
+            <p id="winner-text"></p>
+            <button id="new-game-btn">New Game</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
