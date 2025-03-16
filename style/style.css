@@ -1,0 +1,494 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom right, #ffebee, #fff8e1);
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #e53935;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #ff8f00;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    font-size: 1.5rem;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ff8f00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 20px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: #ff8f00;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 0 0 3px rgba(255,143,0,0.2);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Name Selection Screen */
+#name-selection-screen {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.name-selection-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Login Screen */
+#login-screen {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#player-name-display {
+    color: #ff8f00;
+    font-weight: bold;
+}
+
+/* Game Board */
+#game-board {
+    width: 100%;
+    max-width: 1200px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.game-info {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.game-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Policy Tracks */
+.policy-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.liberal-track, .fascist-track {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.liberal-track {
+    border-left: 5px solid #4d79ff;
+}
+
+.fascist-track {
+    border-left: 5px solid #e53935;
+}
+
+.liberal-track:hover, .fascist-track:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.policy-slots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.policy-slot {
+    width: 80px;
+    height: 120px;
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fascist track icons */
+.fascist-icon {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-investigate {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e53935"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/></svg>');
+}
+
+.icon-peek {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e53935"><path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"/></svg>');
+}
+
+.icon-election {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e53935"><path d="M18,13H17.32L15.32,15H17.23L19,17H5L6.78,15H8.83L6.83,13H6L3,16V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V16L18,13M17,7.95L12.05,12.9L8.5,9.36L13.46,4.41L17,7.95M12.76,2.29L6.39,8.66C6,9.05 6,9.68 6.39,10.07L11.34,15C11.73,15.41 12.36,15.41 12.75,15L19.11,8.63C19.5,8.24 19.5,7.61 19.11,7.22L14.16,2.3C13.78,1.9 13.15,1.9 12.76,2.29Z"/></svg>');
+}
+
+.icon-execute {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e53935"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M16,10V12H8V10H16M12,16A2,2 0 0,1 10,14H14A2,2 0 0,1 12,16Z"/></svg>');
+}
+
+/* Player Area */
+.player-area {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.player-role-container, .players-container {
+    flex: 1;
+    min-width: 300px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.player-role-container:hover, .players-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.role-card {
+    width: 120px;
+    height: 180px;
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 0 auto;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.role-card:hover {
+    transform: translateY(-5px) rotate(2deg);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+#players {
+    list-style-type: none;
+}
+
+#players li {
+    padding: 12px 15px;
+    margin: 8px 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    position: relative;
+}
+
+#players li:hover {
+    background-color: #f0f0f0;
+    transform: translateX(5px);
+}
+
+#players li.disconnected {
+    color: #999;
+    background-color: #f0f0f0;
+}
+
+.player-controls {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+#players li:hover .player-controls {
+    display: block;
+}
+
+.kick-btn, .ban-btn {
+    padding: 5px 10px;
+    margin: 0 2px;
+    font-size: 0.7rem;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    max-width: 90%;
+    width: 500px;
+    text-align: center;
+    animation: scaleIn 0.3s ease-out;
+}
+
+/* Election Popup */
+.nomination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.president-nominee, .chancellor-nominee {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    min-width: 150px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.president-nominee {
+    border-left: 4px solid #ff8f00;
+}
+
+.chancellor-nominee {
+    border-left: 4px solid #e53935;
+}
+
+.president-nominee:hover, .chancellor-nominee:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.nomination-x {
+    font-size: 2rem;
+    margin: 0 20px;
+    color: #e53935;
+}
+
+.pixelated-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+}
+
+.voting-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.ja-btn, .nein-btn {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    min-width: 150px;
+    border-radius: 50px;
+}
+
+.ja-btn {
+    background-color: #4d79ff;
+}
+
+.nein-btn {
+    background-color: #e53935;
+}
+
+/* Policy Selection */
+.policy-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.policy-card {
+    width: 120px;
+    height: 180px;
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.policy-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Executive Action */
+#action-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Game Over */
+#winner-text {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .policy-tracks {
+        flex-direction: row;
+    }
+    
+    .liberal-track, .fascist-track {
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    .policy-slot {
+        width: 60px;
+        height: 90px;
+    }
+    
+    .role-card, .policy-card {
+        width: 90px;
+        height: 135px;
+    }
+    
+    .pixelated-name {
+        font-size: 1rem;
+    }
+    
+    .ja-btn, .nein-btn {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        min-width: 120px;
+    }
+}
